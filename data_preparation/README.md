@@ -22,7 +22,9 @@ $ wget -O detectron_weights/detectron_model.yaml  https://dl.fbaipublicfiles.com
 
 NOTE: just modify the code in /content/vqa-maskrcnn-benchmark/maskrcnn_benchmark/utils/imports.py, change PY3 to PY37
 
-to run the script
+For ImageNet VidVRD: run the script
 ```
 $ ./vidvrd_feat.sh
 ```
+
+Similary features for VidOR can be extracted.
