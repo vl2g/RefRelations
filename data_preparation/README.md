@@ -24,5 +24,5 @@ NOTE: just modify the code in /content/vqa-maskrcnn-benchmark/maskrcnn_benchmark
 
 to run the script
 ```
-$ python fsrr_extract_frcnn_feats.py --image_dir=<path to images directory>
+$ ./vidvrd_feat.sh
 ```
