@@ -1,0 +1,8 @@
+per_gpu_train_batch_size: 64
+xml_file_path: /data1/yogesh/dataset/vidvrd/vidvrd-dataset/all_files_json # path to vrr-vg xml files directory
+npy_file_path: /data1/yogesh/dataset/vidvrd/frcnn_feat # path to faster r-cnn features directory
+saved_dir: saved_vr_encoder_relations # path to save vr during training
+# train_predicates_path: data/vrrvg_predicates_train.json 
+train_predicates_path: /data1/yogesh/dataset/vidvrd/vidvrd-dataset/vidvrd_train_predicates.json # path to train predicates json file
+saved_vtranse_input: True # save relations while training
+training_split_ratio : 0.8
