@@ -13,17 +13,17 @@
 
 **To setup environment**
 ```
-# create new env vrc
-$ conda create -n fsrr python=3.8.5
+  # create new env vrc
+  $ conda create -n fsrr python=3.8.5
 
-# activate fsrr
-$ conda activate fsrr
+  # activate fsrr
+  $ conda activate fsrr
 
-# install pytorch, torchvision
-$ conda install pytorch==1.7.0 torchvision==0.8.0 cudatoolkit=10.2 -c pytorch
+  # install pytorch, torchvision
+  $ conda install pytorch==1.7.0 torchvision==0.8.0 cudatoolkit=10.2 -c pytorch
 
-# install other dependencies
-$ pip install -r requirements.txt
+  # install other dependencies
+  $ pip install -r requirements.txt
 ```
 
 ## Training
@@ -33,12 +33,12 @@ $ pip install -r requirements.txt
 
 - Split Videos into Frames
 ``` 
-  $ python video_to_frame.py
+$ python video_to_frame.py
 ```
 - Extract faster_rcnn features: 
 ``` 
-    $ sh data_preparation/vidor.sh
-    # Please follow instructions [here](data_preparation/README.md).
+  $ sh data_preparation/vidor.sh
+  # Please follow instructions [here](data_preparation/README.md).
 ```
 - Extract I3d features:
 ```
@@ -47,8 +47,8 @@ $ pip install -r requirements.txt
 
 ### Traning RelationNet and VR_Encoder
 ```
-$ python model/relnet.py
-# Follow model/config.py for different model settings
+  $ python model/relnet.py
+  # Follow model/config.py for different model settings
 ```
 ### Inference
 ```
@@ -58,5 +58,5 @@ $ python model/relnet.py
 
 ### Evaluation
 ```
-$ sh eval/eval.sh
+  $ sh eval/eval.sh
 ```
