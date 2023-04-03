@@ -36,9 +36,11 @@ $ pip install -r requirements.txt
   $ python video_to_frame.py
 ```
 - Extract faster_rcnn features: 
-``` $ sh data_preparation/vidor.sh
+``` 
+    $ sh data_preparation/vidor.sh
     # Please follow instructions [here](data_preparation/README.md).
 ```
 - Extract I3d features:
+```
   $ sh data_preparation/vidor_i3d.sh
 ```
