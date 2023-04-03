@@ -44,3 +44,19 @@ $ pip install -r requirements.txt
 ```
   $ sh data_preparation/vidor_i3d.sh
 ```
+
+### Traning RelationNet and VR_Encoder
+```
+$ python model/relnet.py
+# Follow model/config.py for different model settings
+
+### Inference
+```
+$ python inference/FullModel_inf.py
+# Follow inference/config.py for inference settings
+'''
+
+### Evaluation
+```
+$ sh eval/eval.sh
+```
