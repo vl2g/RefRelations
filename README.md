@@ -49,12 +49,12 @@ $ pip install -r requirements.txt
 ```
 $ python model/relnet.py
 # Follow model/config.py for different model settings
-
+```
 ### Inference
 ```
-$ python inference/FullModel_inf.py
-# Follow inference/config.py for inference settings
-'''
+  $ python inference/FullModel_inf.py
+  # Follow inference/config.py for inference settings
+```
 
 ### Evaluation
 ```
