@@ -2,7 +2,7 @@
 
 **Complete Code will be updated soon**
 
-[project page](https://vl2g.github.io/projects/refRelations/) | [paper]()
+[project page](https://vl2g.github.io/projects/refRelations/) | [paper](https://vl2g.github.io/projects/refRelations/docs/paper.pdf)
 
 ## Requirements
 * Use **python >= 3.8.5**. Conda recommended : [https://docs.anaconda.com/anaconda/install/linux/](https://docs.anaconda.com/anaconda/install/linux/)
@@ -31,5 +31,14 @@ $ pip install -r requirements.txt
 ### Preparing dataset
 - Download ViOR and ImageNet VidVRD dataset from [https://xdshang.github.io/docs/imagenet-vidvrd.html and https://xdshang.github.io/docs/vidor.html)
 
-
-- Extract faster_rcnn features of video frames images using [data_preparation/fsrr_extract_frcnn_feats.py](data_preparation/fsrr_extract_frcnn_feats.py). Please follow instructions [here](data_preparation/README.md).
+- Split Videos into Frames
+``` 
+  $ python video_to_frame.py
+```
+- Extract faster_rcnn features: 
+``` $ sh data_preparation/vidor.sh
+    # Please follow instructions [here](data_preparation/README.md).
+```
+- Extract I3d features:
+  $ sh data_preparation/vidor_i3d.sh
+```
