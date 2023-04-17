@@ -13,7 +13,7 @@
 
 **To setup environment**
 ```
-  # create new env vrc
+  # create new env fsrr
   $ conda create -n fsrr python=3.8.5
 
   # activate fsrr
