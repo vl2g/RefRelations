@@ -59,3 +59,16 @@ $ python video_to_frame.py
 ```
   $ sh eval/eval.sh
 ```
+
+## Cite
+If you find this work useful for your research, please consider citing.
+<pre><tt>@inproceedings{
+fewshot_ref_rel,
+title={Few-Shot Referring Relationships in Videos},
+author={Yogesh Kumar, Anand Mishra},
+booktitle={Conference on Computer Vision and Pattern Recognition 2023},
+year={2023},
+url={https://openreview.net/forum?id=dCbmHXhGtib}
+}
+}</tt></pre>
+
