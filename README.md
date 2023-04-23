@@ -1,4 +1,4 @@
-**Implementation of the Few-shot Referring Relatiohsip in Videos (CVPR 2022) paper**
+**Implementation of the Few-shot Referring Relatiohsip in Videos (CVPR 2023) paper**
 
 
 [project page](https://vl2g.github.io/projects/refRelations/) | [paper](https://vl2g.github.io/projects/refRelations/docs/paper.pdf)
