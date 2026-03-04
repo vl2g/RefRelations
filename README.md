@@ -1,6 +1,5 @@
 # Few-Shot Referring Relationships in Videos
-**CVPR 2023** | [Paper](https://vl2g.github.io/projects/refRelations/) 
-
+[![AAAI'26 (PDF)](https://img.shields.io/badge/Paper-CVPR'23-blue)](https://openaccess.thecvf.com/content/CVPR2023/papers/Kumar_Few-Shot_Referring_Relationships_in_Videos_CVPR_2023_paper.pdf)
 ## Overview
 Given a query visual relationship `<subject, predicate, object>` and a test video, this framework spatiotemporally localizes the subject and object using only a few support videos sharing the same predicate (which is **unseen during training**).
 
