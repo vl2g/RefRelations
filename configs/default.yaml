@@ -1,0 +1,63 @@
+# configs/default.yaml
+
+
+# ── Data ──────────────────────────────────────────────
+data:
+  vidvrd_root: "data/vidvrd"
+  vidor_root: "data/vidor"
+  feature_root: "data/features"          # pre-extracted FasterRCNN/I3D
+  glove_path: "data/glove.840B.300d.txt"
+  num_train_predicates_vidvrd: 88
+  num_test_predicates_vidvrd: 22
+  num_train_predicates_vidor: 35
+  num_test_predicates_vidor: 15
+
+# ── Model ─────────────────────────────────────────────
+model:
+  # FasterRCNN
+  num_boxes_per_frame: 30          # M in the paper
+  roi_feat_dim: 2048               # f_app dimension
+  spatial_feat_dim: 4              # f_spa: (x1, y1, x2, y2) normalized
+  # I3D
+  i3d_feat_dim: 1024
+  # GloVe
+  word_embed_dim: 300              # G(s), G(o) dimension
+  # Subject/Object encoder (Eq. 4 & 5)
+  so_hidden_dim: 512
+  so_out_dim: 256
+  # GSA / LLA
+  use_gsa: true
+  use_lla: true
+  lla_window: 5                    # ±2 frames
+  # Relationship embedding (Eq. 15) – translational
+  rel_embed_dim: 256
+  # Relation Network
+  rn_hidden_dim: 512
+  # Belief Propagation
+  bp_iterations: 10
+  bp_threshold: -0.5               # skip-frame threshold
+
+# ── Training ──────────────────────────────────────────
+train:
+  support_size: 4                  # K in the paper
+  episodes_per_epoch: 1000
+  num_epochs: 50
+  batch_size: 1                    # 1 episode per step
+  lr: 1.0e-5
+  optimizer: "adam"
+  dropout: 0.3
+  early_stopping_patience: 10
+  checkpoint_dir: "checkpoints"
+  log_dir: "logs"
+
+# ── Evaluation ────────────────────────────────────────
+eval:
+  support_size: 4
+  iou_threshold: 0.5               # IoU for correct bounding box
+  trajectory_correct_ratio: 0.5   # fraction of frames that must be correct
+  solver: "belief_propagation"     # "frame_level" | "greedy" | "belief_propagation"
+
+# ── Hardware ──────────────────────────────────────────
+device: "cuda"
+seed: 42
+num_workers: 4
