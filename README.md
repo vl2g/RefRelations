@@ -1,74 +1,65 @@
-**Implementation of the Few-shot Referring Relatiohsip in Videos (CVPR 2023) paper**
+# Few-Shot Referring Relationships in Videos
+**CVPR 2023** | [Paper](https://vl2g.github.io/projects/refRelations/) 
 
+## Overview
+Given a query visual relationship `<subject, predicate, object>` and a test video, this framework spatiotemporally localizes the subject and object using only a few support videos sharing the same predicate (which is **unseen during training**).
 
-[project page](https://vl2g.github.io/projects/refRelations/) | [paper](https://vl2g.github.io/projects/refRelations/docs/paper.pdf)
-
-## Requirements
-* Use **python >= 3.8.5**. Conda recommended : [https://docs.anaconda.com/anaconda/install/linux/](https://docs.anaconda.com/anaconda/install/linux/)
-
-* Use **pytorch 1.7.0 CUDA 10.2 or higher**
-
-* Other requirements from 'requirements.txt'
-
-**To setup environment**
+## Directory Structure
 ```
-  # create new env fsrr
-  $ conda create -n fsrr python=3.8.5
+few_shot_refrel/
+├── configs/
+│   └── default.yaml            # All hyperparameters
+├── datasets/
+│   ├── base_dataset.py         # Abstract dataset class
+│   ├── vidvrd_dataset.py        # ImageNet-VidVRD dataset loader
+│   └── vidor_dataset.py        # VidOR dataset loader
+├── models/
+│   ├── feature_extractor.py    # FasterRCNN + I3D feature extraction
+│   ├── relationship_embedding.py # Query-conditioned relationship embedding
+│   ├── aggregation.py          # GSA and LLA modules
+│   ├── relation_network.py     # Metric-based meta-learner
+│   └── random_field.py         # T-partite random field + belief propagation
+├── utils/
+│   ├── metrics.py              # Asub, Aobj, Ar, mIoU computations
+│   ├── episode_sampler.py      # Episodic training sampler
+│   └── visualization.py        # Trajectory visualization
+├── scripts/
+│   ├── extract_features.py     # Pre-extract FasterRCNN/I3D features
+│   ├── train.py                # Training script
+│   ├── test.py                 # Evaluation script
+├── train.py                    # Main training entry point
+├── test.py                     # Main evaluation entry point
+└── requirements.txt
+```
 
-  # activate fsrr
-  $ conda activate fsrr
+## Setup
+```bash
+pip install -r requirements.txt
+```
 
-  # install pytorch, torchvision
-  $ conda install pytorch==1.7.0 torchvision==0.8.0 cudatoolkit=10.2 -c pytorch
-
-  # install other dependencies
-  $ pip install -r requirements.txt
+## Data Preparation
+Download [ImageNet-VidVRD](https://xdshang.github.io/docs/imagenet-vidvrd.html) or [VidOR](https://xdshang.github.io/docs/vidor.html), then:
+```bash
+python scripts/extract_features.py --dataset vidvrd --data_root /path/to/data
 ```
 
 ## Training
-
-### Preparing dataset
-- Download ViOR and ImageNet VidVRD dataset from [https://xdshang.github.io/docs/imagenet-vidvrd.html and https://xdshang.github.io/docs/vidor.html)
-
-- Split Videos into Frames
-``` 
-$ python video_to_frame.py
-```
-- Extract faster_rcnn features: 
-``` 
-  $ sh data_preparation/vidor.sh
-  # Please follow instructions [here](data_preparation/README.md).
-```
-- Extract I3d features:
-```
-  $ sh data_preparation/vidor_i3d.sh
+```bash
+python train.py --config configs/default.yaml --dataset vidvrd
 ```
 
-### Traning RelationNet and VR_Encoder
-```
-  $ python model/relnet.py
-  # Follow model/config.py for different model settings
-```
-### Inference
-```
-  $ python inference/FullModel_inf.py
-  # Follow inference/config.py for inference settings
+## Evaluation
+```bash
+python test.py --config configs/default.yaml --dataset vidvrd --checkpoint checkpoints/best.pth
 ```
 
-### Evaluation
-```
-  $ sh eval/eval.sh
-```
 
-## Cite
-If you find this work useful for your research, please consider citing.
-<pre><tt>@inproceedings{
-fewshot_ref_rel,
-title={Few-Shot Referring Relationships in Videos},
-author={Yogesh Kumar, Anand Mishra},
-booktitle={Conference on Computer Vision and Pattern Recognition 2023},
-year={2023},
-url={https://openreview.net/forum?id=dCbmHXhGtib}
+## Citation
+```bibtex
+@inproceedings{kumar2023fewshot,
+  title={Few-Shot Referring Relationships in Videos},
+  author={Kumar, Yogesh and Mishra, Anand},
+  booktitle={CVPR},
+  year={2023}
 }
-}</tt></pre>
-
+```
